@@ -150,7 +150,17 @@ class Net_Qiita {
     $method = strtoupper ( $method );
     $options = self::$CURL_OPTIONS;
     if ( $method == 'GET' ){
-      if ( is_array ( $params ) ) $url .= '?' . http_build_query ( $params, null, '&' );
+      $query =  null;
+      if ( is_array ( $params ) ) { 
+        $query = http_build_query ( $params, null, '&' );
+      }
+      elseif ( is_scalar ( $params ) ) {
+        $query = $params;
+      }
+      else {
+        throw new Exception ( 'Invalid params' );
+      }
+      $url .=  ( preg_match ( '#\?#', $url ) ? '&' : '?' )  . $query;
     }
     else {
       // POST 系の パラメータの設定

@@ -126,6 +126,23 @@ class Net_QiitaTest extends PHPUnit_Framework_TestCase {
         CURLOPT_HEADER         => 1,
         CURLOPT_TIMEOUT        => 60,
         CURLOPT_USERAGENT      => 'net-qiita-api',
+        CURLOPT_URL            => 'http://hoge/fuga.html?hogefuga=1&name=value',
+        CURLOPT_HTTPHEADER     => array (
+          'header1',
+          'header2',
+        ),    
+      ), $this->_Target->buildCurlOptions ( 
+        'GET',
+        'http://hoge/fuga.html?hogefuga=1',
+        array ( 'name' => 'value' ),
+        array ( 'header1', 'header2') 
+      ));
+      $this->assertEquals (array (
+        CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HEADER         => 1,
+        CURLOPT_TIMEOUT        => 60,
+        CURLOPT_USERAGENT      => 'net-qiita-api',
         CURLOPT_URL            => 'http://hoge/fuga.html',
         CURLOPT_POST           => 1,
         CURLOPT_POSTFIELDS     => http_build_query ( array ( 'name' => 'value' ), null, '&'),
