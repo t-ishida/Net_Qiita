@@ -16,7 +16,7 @@ class Net_Qiita {
   );
  
   /**
-   * データをセットする
+   * コンストラクタ
    * @param データ
    */
   public function __construct ( $data = null ) {
@@ -25,7 +25,7 @@ class Net_Qiita {
   }
 
   /**
-   * データをセットする
+   * データをセットする(Webならばセッションなどから設定すると良い)
    * @param データ
    */
   public function setData ( $data ) {
@@ -33,7 +33,7 @@ class Net_Qiita {
   }
 
   /**
-   * データを返す
+   * データを返す(Webならばセッションなどに書き戻すと良い)
    * @return データ
    */
   public function getData () {
