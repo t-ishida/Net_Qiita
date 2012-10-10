@@ -1,4 +1,4 @@
-This is PHP Class for http://qiita.jp
+This is PHP Class for http://qiita.com
 
 * Installation
 
