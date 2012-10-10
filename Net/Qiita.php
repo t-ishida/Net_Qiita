@@ -82,7 +82,7 @@ class Net_Qiita {
    * @return 取得した結果
    */
   public function put ( $name, $params = null ) {
-    return json_deceode ( $this->request ( 'PUT', $this->buildUrl ( $name ) , $params ) );
+    return json_decode ( $this->request ( 'PUT', $this->buildUrl ( $name ) , $params ) );
   }
 
   /**
@@ -92,7 +92,7 @@ class Net_Qiita {
    * @return 取得した結果
    */
   public function delete ( $name, $params = null ) {
-    return $this->request ( 'DELETE', $this->buildUrl ( $name ) , $params );
+    return json_decode ( $this->request ( 'DELETE', $this->buildUrl ( $name ) , $params ) );
   }
 
   /**
