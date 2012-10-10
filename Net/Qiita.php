@@ -82,7 +82,7 @@ class Net_Qiita {
    * @return 取得した結果
    */
   public function postWithJSON ( $name, $params = null ) {
-    return json_decode ( $this->request ( 'POST', $this->buildUrl ( $name ) , $params, array ( 'Content-Type: application/json' ) ) );
+    return json_decode ( $this->request ( 'POST', $this->buildUrl ( $name ) , json_encode ( $params ), array ( 'Content-Type: application/json' ) ) );
   }
   /**
    * putする
