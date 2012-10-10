@@ -1,13 +1,13 @@
 <?php
 require_once 'Net/Qiita.php';
-$USER_NAME = 'hoge';
-$PASS = 'fuga';
+$USER_NAME = 'USER_NAME';
+$PASS = 'PASS_WORD';
 $qiita = new Net_Qiita();
 $qiita->auth ( $USER_NAME, $PASS );
-$qiita->post ( '/items', array (
+var_dump ( $qiita->postWithJSON ( '/items', json_encode ( array (
   'title' => 'hoge',
-  'tags' =>  json_encode ( array ( array ( 'name' => 'PHP' )  ) ) ,
+  'tags' =>   array ( array ( 'name' => 'PHP' ) ) ,
   'body' => 'piyo',
-  'private' => false,
-  'tweet' => true,
-));
+  'private' => 'false',
+  'tweet' => 'true',
+))));

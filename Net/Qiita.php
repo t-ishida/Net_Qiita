@@ -76,6 +76,15 @@ class Net_Qiita {
   }
 
   /**
+   * JSON付きでPOST
+   * @param url 
+   * @param パラメータ
+   * @return 取得した結果
+   */
+  public function postWithJSON ( $name, $params = null ) {
+    return json_decode ( $this->request ( 'POST', $this->buildUrl ( $name ) , $params, array ( 'Content-Type: application/json' ) ) );
+  }
+  /**
    * putする
    * @param url 
    * @param パラメータ
@@ -148,7 +157,6 @@ class Net_Qiita {
       if     ( is_array ( $params ) ) $options[CURLOPT_POSTFIELDS] = http_build_query ( $params, null, '&' );
       elseif ( is_file ( $params ) )  $options[CURLOPT_POSTFIELDS] = file_get_contents ( $params );
       elseif ( $params )              $options[CURLOPT_POSTFIELDS] = $params;
-
       // method の 決定
       if     ( $method == 'POST' )    $options[CURLOPT_POST]       = 1;
       elseif ( in_array ( $method, array ( 'DELETE', 'PUT' )  ) )  $options[CURLOPT_CUSTOMREQUEST] = $method;
